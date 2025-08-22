@@ -1,6 +1,16 @@
 [package]
 name = "simple_shell"
 version = "0.1.0"
-edition = "2024"
+edition = "2021"
+
+[[bin]]
+name = "taminal"
+path = "src/main.rs"
+
+[[bin]]
+name = "taminal_gui"
+path = "src/main_gui.rs"
 
 [dependencies]
+eframe = "0.28"
+egui = "0.28"
