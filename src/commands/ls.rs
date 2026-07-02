@@ -2,6 +2,9 @@
 
 use std::fs;
 
+/// コマンド名
+pub const NAME: &str = "ls";
+
 /// 引数省略時はカレントディレクトリを表示する
 pub fn run(args: &[&str]) {
     let dir = if args.is_empty() { "." } else { args[0] };

@@ -7,8 +7,6 @@
 mod commands;
 mod shell;
 
-use commands::{cd, clear, help, ls, mkdir, pwd, rm, rmdir};
-
 fn main() {
     println!("Simple Terminal - Type 'exit' or 'quit' to exit");
     println!("Tip: Type 'help' to see available commands");
@@ -38,24 +36,16 @@ fn main() {
         let command = parts[0];
         let args = &parts[1..];
 
-        match command {
-            "exit" | "quit" => {
-                println!("さようなら!");
-                break;
-            }
-            "cd" => cd::run(args),
-            "pwd" => pwd::run(),
-            "clear" => clear::run(),
-            "help" => help::run(),
-            "rm" => rm::run(args),
-            "rmdir" => rmdir::run(args),
-            "mkdir" => mkdir::run(args),
-            "ls" => ls::run(args),
-            // ビルトイン以外は受け付けない（外部コマンドは実行しない）
-            _ => {
-                eprintln!("{}: command not found", command);
-                eprintln!("Type 'help' to see available commands");
-            }
+        // 終了だけはループ制御が絡むためここで処理する
+        if command == "exit" || command == "quit" {
+            println!("さようなら!");
+            break;
+        }
+
+        // それ以外はコマンドテーブルから名前で引いて実行する
+        if !commands::dispatch(command, args) {
+            eprintln!("{}: command not found", command);
+            eprintln!("Type 'help' to see available commands");
         }
     }
 }

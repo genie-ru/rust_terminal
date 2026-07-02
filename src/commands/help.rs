@@ -1,6 +1,9 @@
 //! helpコマンド。使用可能なコマンド一覧を表示する
 
-pub fn run() {
+/// コマンド名
+pub const NAME: &str = "help";
+
+pub fn run(_args: &[&str]) {
     println!("=== Simple Terminal - Available Commands ===\n");
 
     println!("File and Directory Operations:");

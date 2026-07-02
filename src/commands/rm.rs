@@ -3,6 +3,9 @@
 use std::fs;
 use std::path::Path;
 
+/// コマンド名
+pub const NAME: &str = "rm";
+
 pub fn run(args: &[&str]) {
     if args.is_empty() {
         eprintln!("rm: missing operand");

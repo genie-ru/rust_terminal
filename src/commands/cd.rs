@@ -4,6 +4,9 @@ use std::env;
 use std::fs;
 use std::path::Path;
 
+/// コマンド名
+pub const NAME: &str = "cd";
+
 /// cdコマンドを処理する。引数なしならホームディレクトリへ移動する。
 ///
 /// 末尾に `\t` を含む場合は補完候補を表示する簡易実装。
