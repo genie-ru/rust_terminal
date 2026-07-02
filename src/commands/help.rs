@@ -18,9 +18,6 @@ pub fn run() {
     println!("  help          - Show this help message");
     println!("  exit/quit     - Exit the terminal");
 
-    println!("\nOther Commands:");
-    println!("  [command]     - Execute as external command");
-
     println!("\nShortcuts:");
     println!("  Ctrl+C        - Interrupt running command");
     println!("  Ctrl+D        - Exit on empty line");

@@ -2,12 +2,12 @@
 //!
 //! 各コマンドの実装はモジュールに分割している:
 //! - shell:    プロンプト表示・入力読み取り
-//! - commands: 各種ビルトイン／外部コマンド
+//! - commands: 各ビルトインコマンド（外部コマンドは実行しない）
 
 mod commands;
 mod shell;
 
-use commands::{cd, clear, external, help, ls, mkdir, pwd, rm, rmdir};
+use commands::{cd, clear, help, ls, mkdir, pwd, rm, rmdir};
 
 fn main() {
     println!("Simple Terminal - Type 'exit' or 'quit' to exit");
@@ -51,8 +51,11 @@ fn main() {
             "rmdir" => rmdir::run(args),
             "mkdir" => mkdir::run(args),
             "ls" => ls::run(args),
-            // ビルトイン以外は外部コマンドとして実行
-            _ => external::execute_external_command(command, args),
+            // ビルトイン以外は受け付けない（外部コマンドは実行しない）
+            _ => {
+                eprintln!("{}: command not found", command);
+                eprintln!("Type 'help' to see available commands");
+            }
         }
     }
 }

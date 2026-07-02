@@ -4,7 +4,6 @@
 
 pub mod cd;
 pub mod clear;
-pub mod external;
 pub mod help;
 pub mod ls;
 pub mod mkdir;
